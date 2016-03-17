@@ -48,7 +48,10 @@ public class RepeatingTask {
 
         Calendar taskDay = (Calendar)startDate.clone();  //Make a copy of the start date, so don't affect it
 
-        for (int d = 0 ; d < 365 ; d+=frequency) {
+        //Repeat for 365 days times number of years. Notice loop adds frequency to d counter, so if
+        //task should repeat weekly, then d will be 0, 7, 14... d is not used inside the loop, it's only
+        //to keep track of how far through the year we've traveled. You can write this logic in various other ways.
+        for (int d = 0 ; d < ( 365 * years ) ; d+=frequency) {
 
             taskDay.add(Calendar.DAY_OF_YEAR, frequency);  //Add frequency days to the taskDay
 
